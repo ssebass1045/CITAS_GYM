@@ -8,11 +8,11 @@
 import { Router } from "express";
 import { getAllTurns, getTurnById, agendar, cancelar } from "../controllers/turnsController";
 
-const turnRouter = Router();
+const turnsRouter = Router();
 
-turnRouter.get('/', getAllTurns);
-turnRouter.get('/:turnId', getTurnById);
-turnRouter.post('/agendar', agendar);
-turnRouter.put('/cancelar/:turnId', cancelar);
+turnsRouter.get('/', getAllTurns);
+turnsRouter.get('/:turnId', getTurnById);
+turnsRouter.post('/agendar', agendar);
+turnsRouter.put('/cancelar/:turnId', cancelar);
 
-export default turnRouter;
+export default turnsRouter;

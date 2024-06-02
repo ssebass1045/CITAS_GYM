@@ -1,12 +1,12 @@
 import { Router } from "express";
-import userRouter from "./userRouter";
-import turnRouter from "./turnsRouter";
+import usersRouter from "./usersRouter";
+import turnsRouter from "./turnsRouter";
 import auth from "../middlewares/autenticacion";
 
 const indexRouter = Router();
 
-indexRouter.use('/users', userRouter);
-indexRouter.use('/turns', turnRouter);
+indexRouter.use('/users', usersRouter);
+indexRouter.use('/turns', turnsRouter);
 
 
 export default indexRouter;
