@@ -1,10 +1,11 @@
 import { Request, Response } from "express";
-import * as userService from '../services/usersService';
-import { IUser } from '../interfaces/IUser';
+import * as usersService from "../services/usersService";
+import CreateUserDto from "../dtos/UserDto";
+import * as credentialsService from "../services/credentialsService";
 
 export const getAllUsers = async (req: Request, res: Response) => {
     try {
-        const users = await userService.getAllUsers();
+        const users = await usersService.getAllUsers();
         res.status(200).json(users);
     } catch (error: any) {
         res.status(500).json({ message: error.message });
@@ -14,28 +15,39 @@ export const getAllUsers = async (req: Request, res: Response) => {
 export const getUserById = async (req: Request, res: Response) => {
     const id = parseInt(req.params.id);
     try {
-        const user = await userService.getUserById(id);
+        const user = await usersService.getUserById(id);
         if (user) {
             res.status(200).json(user);
         } else {
             res.status(404).json({ message: 'User not found' });
         }
-    } catch (error: any) { 
+    } catch (error: any) {
         res.status(500).json({ message: error.message });
     }
 };
 
 export const register = async (req: Request, res: Response) => {
-    const newUser: IUser = req.body;
+    const userDto: CreateUserDto = req.body;
     try {
-        const userId = await userService.register(newUser);
-        res.status(201).json({ id: userId, message: 'User created successfully' });
-    } catch (error: any) { 
+        const newUser = await usersService.register(userDto);
+        res.status(201).json(newUser);
+    } catch (error: any) {
         res.status(500).json({ message: error.message });
     }
 };
 
 
+
 export const login = async (req: Request, res: Response) => {
-    res.status(200).json({ message: "login del usuario"})
+    const { username, password } = req.body;
+    try {
+        const credential = await credentialsService.verifyCredential(username, password);
+        if (credential) {
+            res.status(200).json({ message: 'Login successful' });
+        } else {
+            res.status(401).json({ message: 'Invalid credentials' });
+        }
+    } catch (error: any) {
+        res.status(500).json({ message: error.message });
+    }
 };

@@ -1,43 +1,29 @@
 // credentialsService.ts
 
-import { ICredential } from '../interfaces/ICredential';
+import { Credential } from "../entities/Credential";
+import { CredentialModel, UserModel } from "../config/data-source";
+import CreateCredentialDto from "../dtos/CreateCredentialDto";
 
+export const createCredential = async (credentialDto: CreateCredentialDto): Promise<Credential> => {
+    const newCredential = CredentialModel.create(credentialDto);
+    await CredentialModel.save(newCredential);
 
-const credentials: ICredential[] = []; // Almacenará los pares de credenciales
+    // Buscar el usuario y asignar la credencial
+    const user = await UserModel.findOneBy({
+        id: credentialDto.userId
+    });
 
-export const createCredentials = async (username: string, password: string): Promise<number> => {
-    // Genera un ID único para el nuevo par de credenciales
-    const newCredentialId = credentials.length + 1;
+    if (user) {
+        newCredential.user = user;
+        await CredentialModel.save(newCredential);
+    } else {
+        throw new Error('User not found');
+    }
 
-    // Crea un nuevo par de credenciales
-    const newCredential: ICredential = {
-        id: newCredentialId,
-        username,
-        password
-    };
-
-    // Guarda el nuevo par de credenciales en la lista "credentials"
-    credentials.push(newCredential);
-
-    // Devuelve el ID del nuevo par de credenciales creado
-    return newCredentialId;
+    return newCredential;
 };
 
-export const validateCredentials = async (username: string, password: string): Promise<number | null> => {
-    // Busca el nombre de usuario en la lista de credenciales
-    const foundCredential = credentials.find(credential => credential.username === username);
-
-    // Si no se encuentra el nombre de usuario, devuelve null
-    if (!foundCredential) {
-        return null;
-    }
-
-    // Si se encuentra el nombre de usuario, verifica si la contraseña coincide
-    if (foundCredential.password === password) {
-        // Devuelve el ID del par de credenciales si la contraseña es correcta
-        return foundCredential.id;
-    } else {
-        // Devuelve null si la contraseña no coincide
-        return null;
-    }
+export const verifyCredential = async (username: string, password: string): Promise<Credential | null> => {
+    const credential = await CredentialModel.findOne({ where: { username, password } });
+    return credential;
 };
