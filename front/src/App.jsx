@@ -1,16 +1,10 @@
+import React from 'react';
+import Home from './views/Home/Home';
 
-import './App.css'
-import Home from './views/Home/Home'
-Home
-
-
-
-function App() {
-  return (
-    <>
-      <Home />
-    </>
-  )
+const App = () => {
+    return (
+            <Home/>
+    );
 }
 
-export default App
+export default App;

@@ -1,17 +1,12 @@
 import Navbar from "../../components/Navbar/Navbar";
 
-const Home = () => {
-
+const MisTurnos = () => {
     return (
         <div>
-            
             <Navbar/>
-            <h1>Este es el componente Home</h1>
+            <h1>Mis Turnos</h1>
         </div>
     )
+}
 
-};
-
-export default Home;
-
-
+export default MisTurnos;

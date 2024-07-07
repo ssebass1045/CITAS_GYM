@@ -1,17 +1,12 @@
 import Navbar from "../../components/Navbar/Navbar";
 
-const Home = () => {
-
+const About = () => {
     return (
         <div>
-            
             <Navbar/>
-            <h1>Este es el componente Home</h1>
+            <h1>about</h1>
         </div>
     )
+}
 
-};
-
-export default Home;
-
-
+export default About;
