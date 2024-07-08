@@ -17,3 +17,16 @@ const misTurnos = [
     }
 ];
 export default misTurnos;
+
+// "id": 1,
+// "date": "2024-05-02",
+// "time": "12:00",
+// "description": "entrenamiento cardio",
+// "status": "active",
+// "user": {
+//   "id": 2,
+//   "name": "sebastian",
+//   "email": "sebas@example.com",
+//   "birthday": "1995-22-01",
+//   "nDni": "1045520094"
+// }
