@@ -1,33 +1,33 @@
 
 .navbar {
-    background-color: #333;
-    padding: 1rem;
+    background-color: #2b4a3a9f;
+    padding: 1.5rem;
 }
 
 .navList {
     list-style: none;
-    display: flex;
+    display:flex;
     justify-content: space-around;
     margin: 0;
     padding: 0;
 }
 
 .navItem {
-    color: #fff;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
+    color: #dddddd;
+    text-decoration: inherit;
+    padding: 0.5rem 6rem;
 }
 
 .navItem:hover {
-    background-color: #555;
-    border-radius: 5px;
+    background-color: #037b51;
+    border-radius: 50px;
 }
 
 .navButton {
     background: none;
-    border: none;
+    border: 1px solid transparent;
     color: #fff;
-    padding: 0.5rem 1rem;
+    padding: 5rem 3rem;
     cursor: pointer;
 }
 
