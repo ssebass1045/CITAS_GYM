@@ -9,7 +9,7 @@ const Navbar = () => {
         <nav className={styles.navbar}>
             <ul className={styles.navList}>
                 <li><a href="/" className={styles.navItem}>Home</a></li>
-                <li><a href="/mis-turnos" className={styles.navItem}>Mis Turnos</a></li>
+                <li><a href="/mis-turnos" className={styles.navItem}>Mis-Turnos</a></li>
                 <li><a href="/about" className={styles.navItem}>About</a></li>
                 <li><a href="/contacto" className={styles.navItem}>Contacto</a></li>
                 {isAuthenticated ? (

@@ -1,6 +1,6 @@
 
 .navbar {
-    background-color: #2b4a3a9f;
+    background-color: rgba(45, 110, 108, 0.9);;
     padding: 1.5rem;
 }
 
@@ -19,7 +19,7 @@
 }
 
 .navItem:hover {
-    background-color: #037b51;
+    background-color: #343937;
     border-radius: 50px;
 }
 
