@@ -1,10 +1,15 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
+import { useAuth } from '../../context/AuthContext';
 import styles from './Login.module.css';
 
 const LoginForm = () => {
+  const navigate = useNavigate();
+  const { login } = useAuth();
+
   const initialValues = {
     username: '',
     password: '',
@@ -25,7 +30,8 @@ const LoginForm = () => {
       if (response.status === 200) {
         setStatus({ success: true });
         window.alert('Login successful!');
-        // Aquí puedes manejar el almacenamiento del token y la redirección si es necesario.
+        login(); // Actualiza el estado de autenticación
+        navigate('/'); // Redirige al home
       }
     } catch (error) {
       setStatus({ success: false });
@@ -38,7 +44,7 @@ const LoginForm = () => {
   return (
     <div className={styles.container}>
       <div className={styles.form}>
-        <center><h1 className={styles.title}  >Login</h1></center>
+        <center><h1 className={styles.title}>Login</h1></center>
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}

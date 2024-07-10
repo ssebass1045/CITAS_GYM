@@ -1,4 +1,6 @@
+
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Navbar.module.css';
 import { useAuth } from '../../context/AuthContext';
 
@@ -8,26 +10,27 @@ const Navbar = () => {
     return (
         <nav className={styles.navbar}>
             <ul className={styles.navList}>
-                <li><a href="/" className={styles.navItem}>Home</a></li>
-                <li><a href="/mis-turnos" className={styles.navItem}>Mis-Turnos</a></li>
-                <li><a href="/about" className={styles.navItem}>About</a></li>
-                <li><a href="/contacto" className={styles.navItem}>Contacto</a></li>
+                <li><Link to="/" className={styles.navItem}>Home</Link></li>
+                <li><Link to="/about" className={styles.navItem}>About</Link></li>
+                <li><Link to="/contacto" className={styles.navItem}>Contacto</Link></li>
                 {isAuthenticated ? (
                     <>
-                        <li><a href="/perfil" className={styles.navItem}>Perfil</a></li>
-                        <li><a href="/clases" className={styles.navItem}>Clases</a></li>
-                        <li><a href="/blog" className={styles.navItem}>Blog</a></li>
+                        <li><Link to="/mis-turnos" className={styles.navItem}>Mis-Turnos</Link></li>
+                        <li><Link to="/perfil" className={styles.navItem}>Perfil</Link></li>
+                        <li><Link to="/clases" className={styles.navItem}>Clases</Link></li>
+                        <li><Link to="/blog" className={styles.navItem}>Blog</Link></li>
                         <li><button onClick={logout} className={styles.navButton}>Cerrar Sesión</button></li>
                     </>
                 ) : (
                     <>
-                        <li><a href="/login" className={styles.navItem}>Login</a></li>
-                        <li><a href="/register" className={styles.navItem}>Register</a></li>
+                        <li><Link to="/login" className={styles.navItem}>Login</Link></li>
+                        <li><Link to="/register" className={styles.navItem}>Register</Link></li>
                     </>
                 )}
             </ul>
         </nav>
     );
-}
+};
 
 export default Navbar;
+

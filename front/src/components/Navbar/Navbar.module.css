@@ -2,6 +2,8 @@
 .navbar {
     background-color: rgba(45, 110, 108, 0.9);;
     padding: 1.5rem;
+    display: flex;
+    justify-content: space-around;
 }
 
 .navList {
@@ -15,7 +17,8 @@
 .navItem {
     color: #dddddd;
     text-decoration: inherit;
-    padding: 0.5rem 6rem;
+    margin-right: 50px;
+
 }
 
 .navItem:hover {

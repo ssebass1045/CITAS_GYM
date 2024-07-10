@@ -1,10 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import styles from './Register.module.css';
 
 const RegistrationForm = () => {
+  const navigate = useNavigate();
+
   const initialValues = {
     name: '',
     email: '',
@@ -46,8 +49,9 @@ const RegistrationForm = () => {
 
       if (response.status === 200) {
         setStatus({ success: true });
-        resetForm();
         window.alert('¡Registro exitoso!');
+        navigate('/'); // Redirige al login después del registro exitoso
+        resetForm();
       }
     } catch (error) {
       setStatus({ success: false });
