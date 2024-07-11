@@ -38,12 +38,30 @@ export const register = async (req: Request, res: Response) => {
 
 
 
+// export const login = async (req: Request, res: Response) => {
+//     const { username, password } = req.body;
+//     try {
+//         const credential = await credentialsService.verifyCredential(username, password);
+//         if (credential) {
+//             res.status(200).json({ message: 'Login successful' });
+//         } else {
+//             res.status(401).json({ message: 'Invalid credentials' });
+//         }
+//     } catch (error: any) {
+//         res.status(500).json({ message: error.message });
+//     }
+// };
+
+
 export const login = async (req: Request, res: Response) => {
     const { username, password } = req.body;
     try {
-        const credential = await credentialsService.verifyCredential(username, password);
-        if (credential) {
-            res.status(200).json({ message: 'Login successful' });
+        const user = await credentialsService.verifyCredential(username, password);
+        if (user) {
+            res.status(200).json({ 
+                message: 'Login successful', 
+                userId: user.id 
+            });
         } else {
             res.status(401).json({ message: 'Invalid credentials' });
         }
