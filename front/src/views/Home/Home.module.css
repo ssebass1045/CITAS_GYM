@@ -1,0 +1,55 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('https://www.carmila.com/wp-content/uploads/2022/05/xZaragoza-Actur-3-1536x1024.jpg.pagespeed.ic.bstET9x8R9.webp');
+  background-size:cover;
+  background-position: center;
+  padding: 2rem;
+}
+
+.content {
+  text-align: center;
+  color: #000000;
+  background-color: rgba(255, 255, 255, 0.441);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  background-color: aliceblue;
+  border-radius: 20px;
+  padding: 1rem;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.info {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.gallery {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.galleryImage {
+  width: 30%;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.galleryImage:hover {
+  transform: scale(1.1);
+}

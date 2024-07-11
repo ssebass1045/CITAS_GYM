@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('https://www.sportlife.es/uploads/s1/11/24/29/33/fuerza-pesas-istock-1176387938.jpeg'); /* Aquí puedes agregar la imagen de fondo */
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .profileCard {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+  }
+  
+  .title {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  .profileInfo {
+    margin-top: 1rem;
+  }
+  
+  .profileInfo p {
+    margin-bottom: 0.5rem;
+  }
+  

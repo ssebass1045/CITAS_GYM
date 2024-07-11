@@ -1,14 +1,16 @@
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
-import { useAuth } from '../../context/AuthContext';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../redux/userSlice';
 import styles from './Login.module.css';
 
 const LoginForm = () => {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const dispatch = useDispatch();
 
   const initialValues = {
     username: '',
@@ -29,9 +31,11 @@ const LoginForm = () => {
 
       if (response.status === 200) {
         setStatus({ success: true });
+        console.log(response.data);
+        console.log(response.data.userId);
         window.alert('Login successful!');
-        login(); // Actualiza el estado de autenticación
-        navigate('/'); // Redirige al home
+        dispatch(setUser(response.data.userId)); // Guarda la información del usuario en el store global
+        navigate('/');
       }
     } catch (error) {
       setStatus({ success: false });
@@ -77,3 +81,5 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
+
+
